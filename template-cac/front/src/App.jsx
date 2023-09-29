@@ -1,32 +1,33 @@
 import "./App.css";
+import Nav from "./components/Nav/Nav";
+import {useState} from "react";
 import Cards from "./components/Cards/Cards";
-import SearchBar from "./components/SearchBar/SearchBar";
-import Card from "./components/Card/Card"
 
-import characters, { Rick } from "./data.js";
 
 function App() {
+  const example = {
+    id: 1,
+    name: 'Rick Sanchez',
+    status: 'Alive',
+    species: 'Human',
+    gender: 'Male',
+    origin: {
+       name: 'Earth (C-137)',
+       url: 'https://rickandmortyapi.com/api/location/1',
+    },
+    image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+ };
+
+  const [characters, setCharacters] = useState ([]);
+  const onSearch = () =>{
+    setCharacters([...characters, example]);
+  }
   return (
     <>
-      {/* Al componente SearchBar le pasamos por la prop "onSearch" una función */}
-      <SearchBar onSearch={(characterID) => window.alert(characterID)} />
+      <Nav onSearch={onSearch}/>     
+      <Cards characters={characters}/>
 
-      {/* Al componente Cards le pasamos por la prop "characters" el array de personajes que importamos más arriba */}
-      <Cards characters={characters} />
-
-      {/* Al componente Card le pasamos las props que corresponden a las propiedades de un personaje y una función "onClose" */}
-      <Card
-        id={Rick.id}
-        name={Rick.name}
-        status={Rick.status}
-        species={Rick.species}
-        gender={Rick.gender}
-        origin={Rick.origin.name}
-        image={Rick.image}
-        onClose={() => window.alert("Emulamos que se cierra la card")}
-      />
     </>
   );
 }
-
 export default App;
