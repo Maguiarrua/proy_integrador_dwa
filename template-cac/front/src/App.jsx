@@ -1,7 +1,7 @@
 import "./App.css";
-import Card from "./components/Card";
-import SearchBar from "./components/SearchBar";
-import Cards from "./components/Cards";
+import Cards from "./components/Cards/Cards";
+import SearchBar from "./components/SearchBar/SearchBar";
+import Card from "./components/Card/Card"
 
 import characters, { Rick } from "./data.js";
 

@@ -1,0 +1,9 @@
+.wrapperCards{
+    background-color: rgb(213, 248, 177);
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        padding-top: 50px;
+        justify-content: space-around;
+        height: 100vh;
+    }

@@ -1,10 +1,11 @@
-import Card from "./Card";
+import Card from "../Card/Card";
+import style from './Cards.module.css';
 
 const Cards = (props) => {
   const {characters} = props;
   return (
-    <>
-      <div>{characters.map((char) =>{
+
+      <div className={style.wrapperCards}>{characters.map((char) =>{
         return(
           <Card
             key={char.id}
@@ -18,7 +19,7 @@ const Cards = (props) => {
           />
         )
       } )}</div>
-    </>
+
   );
 };
 
