@@ -4,13 +4,13 @@ import style from "./Card.module.css";
 
 
 const Card = (props) => {
-  const { name, species, status, gender,/* origin,*/  image, onClose } = props
+  const { id, name, species, status, gender,/* origin,*/  image, onClose } = props;
   return (
     
     <div className={style.CardContainer}>
       <div className={style.header_card}>
         <div className={style.wrapperButton}>
-          <button className={style.btn} onClick={onClose}>X</button>
+          <button className={style.btn} onClick={() => onClose(id)}>X</button>
         </div>
         <img src={image} alt='' />
       </div>
