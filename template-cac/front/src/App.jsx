@@ -3,16 +3,20 @@ import Nav from "./components/Nav/Nav";
 import {useState} from "react";
 import Cards from "./components/Cards/Cards";
 import axios from "axios";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import About from "./components/About/About";
 import Detail from "./components/Detail/Detail";
 import PATHROUTES from "./helpers/PathRoutes.helpers";
+import Form from "./components/Form/Form";
 
 
 function App() {
-
+  const {pathname} = useLocation ();
   const [characters, setCharacters] = useState ([]);
-  
+
+
+
+ 
   const  onSearch = (id) => {
     axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
        if (data.name) {
@@ -32,13 +36,14 @@ function App() {
 
   return (
     <>
-      <Nav onSearch={onSearch}/>     
+      {pathname !== "/" && <Nav onSearch={onSearch}/>}   
       <Routes>
-        <Route path={PATHROUTES.HOME} element={<Cards characters={characters} onClose={onClose}/>}/>
+      <Route path={PATHROUTES.HOME} element={<Cards characters={characters} onClose={onClose}/>}/>
       <Route path={PATHROUTES.ABOUT} element={<About/>}/>
-      <Route path={PATHROUTES.DETAIL} element={<Detail/>}/>      
+      <Route path={PATHROUTES.DETAIL} element={<Detail/>}/>     
+      <Route path={PATHROUTES.LOGIN} element={<Form/>}/>   
       </Routes>
-      
+      <Form/>
 
     </>
   );
