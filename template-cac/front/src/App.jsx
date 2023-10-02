@@ -38,12 +38,12 @@ function App() {
     <>
       {pathname !== "/" && <Nav onSearch={onSearch}/>}   
       <Routes>
+      <Route path={PATHROUTES.LOGIN} element={<Form/>}/>
       <Route path={PATHROUTES.HOME} element={<Cards characters={characters} onClose={onClose}/>}/>
       <Route path={PATHROUTES.ABOUT} element={<About/>}/>
       <Route path={PATHROUTES.DETAIL} element={<Detail/>}/>     
-      <Route path={PATHROUTES.LOGIN} element={<Form/>}/>   
       </Routes>
-      <Form/>
+
 
     </>
   );
