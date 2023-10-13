@@ -9,9 +9,9 @@ const Form = () => {
         email:"",
         password:"",
     });
-    const [errors, setErrors] = useState();
+    const [errors, setErrors] = useState({});
     const handleChange = (e) => {
-        setErrors(validation({...userData, [e.target.name] : e.target.value}))
+        setErrors(validation({ ...userData, [e.target.name] : e.target.value}));
         setUserData({...userData, [e.target.name] : e.target.value});
         
 
@@ -27,7 +27,15 @@ const Form = () => {
                 type="text" 
                 value={userData.email} 
                 onChange={handleChange} />
-
+                {
+                    errors.e1 ? (
+                        <p>{errors.e1}</p>
+                    ) : errors.e2 ? (<p>
+                        {errors.e2}
+                    </p>) : (
+                        <p>{errors.e3}</p>
+                    )
+                }
                 </div>
           
 
@@ -38,6 +46,14 @@ const Form = () => {
                 type="text" 
                 value={userData.password} 
                 onChange={handleChange} />
+                {
+                    errors.p1 ? (
+                        <p>{errors.p1}</p>
+                    ) : (
+                        <p>{errors.p2}</p>
+                    )
+                }
+
                 </div>
 
                 <button>Submit</button>
@@ -46,6 +62,6 @@ const Form = () => {
         </div>
         
     )
-}
+};
 
 export default Form;

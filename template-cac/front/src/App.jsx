@@ -15,7 +15,6 @@ function App() {
   const [characters, setCharacters] = useState ([]);
 
 
-
  
   const  onSearch = (id) => {
     axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
@@ -36,7 +35,7 @@ function App() {
 
   return (
     <>
-      {pathname !== "/" && <Nav onSearch={onSearch}/>}   
+   { pathname !=='/' && <Nav onSearch={onSearch}/> }   
       <Routes>
       <Route path={PATHROUTES.LOGIN} element={<Form/>}/>
       <Route path={PATHROUTES.HOME} element={<Cards characters={characters} onClose={onClose}/>}/>
