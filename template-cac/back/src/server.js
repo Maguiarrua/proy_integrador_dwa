@@ -2,11 +2,10 @@ const express = require ("express");
 const morgan = require("morgan");
 const router = require("./routes");
 
+const server = express();
+
 server.use(morgan("dev"));
-//server.use((req,res,next) =>{
-//console.log(req);
-//next();
-//});
+
 server.use(router);
 
 
@@ -16,7 +15,7 @@ res.status(200).json({
     name:"magdalena arrúa",
     gender:"female",
     species:"human"
-})
+});
 });
 
 module.exports = server;
