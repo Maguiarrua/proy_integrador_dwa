@@ -1,15 +1,18 @@
-const data =require("../utils/data");
+const { findCharacterById } = require ("../services/charactersService")
 
 
-
-const getCharacterById = (req,res) =>{
+const getCharacterById =  async (req,res) =>{
     const {id} = req.params;
-    const character = data.find(char=>char.id == id);
-    //res.status(200).json(character);
-    if(character) return res.status(200).json(character);
-    else 
-    return res.status(404).json({
-        error: `El personaje con ID ${id} no existe en nuestra BDD`,
-    });
+    try{
+        const character = await findCharacterById(id);
+        
+        return res.status(200).json(character);
+    }
+    catch(error){
+        return res.status(404).json({
+            error: error.message,
+        });
+    }
+  
 };
 module.exports = getCharacterById;
